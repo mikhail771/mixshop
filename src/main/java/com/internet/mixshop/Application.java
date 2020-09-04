@@ -1,3 +1,5 @@
+package com.internet.mixshop;
+
 import com.internet.mixshop.lib.Injector;
 import com.internet.mixshop.model.Product;
 import com.internet.mixshop.service.ProductService;

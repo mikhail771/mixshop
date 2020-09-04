@@ -1,5 +1,6 @@
-package com.internet.mixshop.dao;
+package com.internet.mixshop.dao.impl;
 
+import com.internet.mixshop.dao.ProductDao;
 import com.internet.mixshop.db.Storage;
 import com.internet.mixshop.lib.Dao;
 import com.internet.mixshop.model.Product;

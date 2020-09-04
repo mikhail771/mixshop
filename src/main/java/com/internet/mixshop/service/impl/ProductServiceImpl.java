@@ -1,9 +1,11 @@
-package com.internet.mixshop.service;
+package com.internet.mixshop.service.impl;
 
 import com.internet.mixshop.dao.ProductDao;
 import com.internet.mixshop.lib.Inject;
 import com.internet.mixshop.lib.Service;
 import com.internet.mixshop.model.Product;
+import com.internet.mixshop.service.ProductService;
+
 import java.util.List;
 
 @Service

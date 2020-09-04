@@ -1,5 +1,6 @@
 package com.internet.mixshop.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
@@ -7,12 +8,16 @@ public class ShoppingCart {
     private List<Product> products;
     private Long userId;
 
-    public ShoppingCart(List<Product> products, Long userId) {
-        this.products = products;
-        userId = userId;
+    public ShoppingCart(Long userId) {
+        this.products = new ArrayList<>();
+        this.userId = userId;
     }
 
-    public void setId(long shoppingCartId) {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long shoppingCartId) {
         this.id = shoppingCartId;
     }
 

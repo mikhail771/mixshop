@@ -1,5 +1,6 @@
 package com.internet.mixshop.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
@@ -7,9 +8,8 @@ public class Order {
     private List<Product> products;
     private Long userid;
 
-    public Order(List<Product> products, Long userid) {
-        this.id = id;
-        this.products = products;
+    public Order( Long userid) {
+        this.products = new ArrayList<>();
         this.userid = userid;
     }
 
