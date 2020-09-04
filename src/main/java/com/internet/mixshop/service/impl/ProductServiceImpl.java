@@ -5,7 +5,6 @@ import com.internet.mixshop.lib.Inject;
 import com.internet.mixshop.lib.Service;
 import com.internet.mixshop.model.Product;
 import com.internet.mixshop.service.ProductService;
-
 import java.util.List;
 
 @Service
