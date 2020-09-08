@@ -29,11 +29,11 @@ public class Order {
         this.products = products;
     }
 
-    public Long getUserid() {
+    public Long getUserId() {
         return userid;
     }
 
-    public void setUserid(Long userid) {
+    public void setUserId(Long userid) {
         this.userid = userid;
     }
 

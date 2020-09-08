@@ -1,18 +1,16 @@
 package com.internet.mixshop.service.impl;
 
 import com.internet.mixshop.dao.ShoppingCartDao;
-import com.internet.mixshop.db.Storage;
 import com.internet.mixshop.lib.Inject;
 import com.internet.mixshop.lib.Service;
 import com.internet.mixshop.model.Product;
 import com.internet.mixshop.model.ShoppingCart;
 import com.internet.mixshop.service.ShoppingCartService;
-import java.util.Optional;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Inject
-    ShoppingCartDao shoppingCartDao;
+    private ShoppingCartDao shoppingCartDao;
 
     @Override
     public ShoppingCart create(ShoppingCart shoppingCart) {
@@ -27,10 +25,11 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public boolean deleteProduct(ShoppingCart shoppingCart, Product product) {
-        ShoppingCart sc = shoppingCartDao.getById(shoppingCart.getId()).get();
-        sc.getProducts().remove(product);
-        shoppingCartDao.update(sc);
-        return true;
+        if (shoppingCart.getProducts().remove(product)) {
+            shoppingCartDao.update(shoppingCart);
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -39,10 +38,8 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public Optional<ShoppingCart> getByUserId(Long userId) {
-        return Storage.shoppingCarts.stream()
-                .filter(shoppingCart -> shoppingCart.getUserId().equals(userId))
-                .findFirst();
+    public ShoppingCart getByUserId(Long userId) {
+        return shoppingCartDao.getByUserId(userId).get();
     }
 
     @Override

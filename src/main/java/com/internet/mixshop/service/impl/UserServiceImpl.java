@@ -4,14 +4,13 @@ import com.internet.mixshop.dao.UserDao;
 import com.internet.mixshop.lib.Inject;
 import com.internet.mixshop.lib.Service;
 import com.internet.mixshop.model.User;
-import com.internet.mixshop.service.ShoppingCartService;
 import com.internet.mixshop.service.UserService;
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
     @Inject
-    UserDao userDao;
+    private UserDao userDao;
 
     @Override
     public User create(User user) {
@@ -35,8 +34,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean delete(Long id) {
-        ShoppingCartService shopCartService = new ShoppingCartServiceImpl();
-        shopCartService.delete(shopCartService.getByUserId(id).get());
         return userDao.delete(id);
     }
 }
