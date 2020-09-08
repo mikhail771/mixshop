@@ -29,11 +29,20 @@ public class Order {
         this.products = products;
     }
 
-    public Long getUserid() {
+    public Long getUserId() {
         return userid;
     }
 
-    public void setUserid(Long userid) {
+    public void setUserId(Long userid) {
         this.userid = userid;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{"
+                + "id=" + id
+                + ", products=" + products
+                + ", userid=" + userid
+                + '}';
     }
 }
