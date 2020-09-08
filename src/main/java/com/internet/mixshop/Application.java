@@ -21,14 +21,14 @@ public class Application {
         productService.create(cookie);
         productService.create(dreamDrink);
         System.out.println("Begin");
-        productService.getAllProducts().forEach(System.out::println);
+        productService.getAll().forEach(System.out::println);
         milk.setPrice(29.99);
         productService.update(milk);
         System.out.println("After update");
-        productService.getAllProducts().forEach(System.out::println);
+        productService.getAll().forEach(System.out::println);
         System.out.println("After delete");
-        productService.deleteById(cookie.getId());
-        productService.getAllProducts().forEach(System.out::println);
+        productService.delete(cookie.getId());
+        productService.getAll().forEach(System.out::println);
 
         UserService userService = (UserService) injector.getInstance(UserService.class);
         User user = new User("Test user", "testtest", "password");
