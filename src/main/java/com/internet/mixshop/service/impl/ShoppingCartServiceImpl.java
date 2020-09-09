@@ -6,6 +6,7 @@ import com.internet.mixshop.lib.Service;
 import com.internet.mixshop.model.Product;
 import com.internet.mixshop.model.ShoppingCart;
 import com.internet.mixshop.service.ShoppingCartService;
+import java.util.List;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
@@ -35,6 +36,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Override
     public void clear(ShoppingCart shoppingCart) {
         shoppingCart.getProducts().clear();
+        shoppingCartDao.update(shoppingCart);
     }
 
     @Override
@@ -43,7 +45,17 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     }
 
     @Override
-    public boolean delete(ShoppingCart shoppingCart) {
-        return shoppingCartDao.delete(shoppingCart.getId());
+    public boolean delete(Long id) {
+        return shoppingCartDao.delete(id);
+    }
+
+    @Override
+    public ShoppingCart getById(Long id) {
+        return shoppingCartDao.getById(id).get();
+    }
+
+    @Override
+    public List<ShoppingCart> getAll() {
+        return shoppingCartDao.getAll();
     }
 }

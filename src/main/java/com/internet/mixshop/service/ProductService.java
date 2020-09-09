@@ -1,16 +1,7 @@
 package com.internet.mixshop.service;
 
 import com.internet.mixshop.model.Product;
-import java.util.List;
 
-public interface ProductService {
-    Product create(Product product);
-
-    Product getById(Long productId);
-
+public interface ProductService extends GenericService<Product, Long> {
     Product update(Product product);
-
-    List<Product> getAllProducts();
-
-    boolean deleteById(Long productId);
 }
