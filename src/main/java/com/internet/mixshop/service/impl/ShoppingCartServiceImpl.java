@@ -58,4 +58,12 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public List<ShoppingCart> getAll() {
         return shoppingCartDao.getAll();
     }
+
+    @Override
+    public double findTotalPrice(ShoppingCart shoppingCart) {
+        List<Product> products = shoppingCart.getProducts();
+        return products.stream()
+                .map(Product::getPrice)
+                .reduce(0.0, Double::sum);
+    }
 }
