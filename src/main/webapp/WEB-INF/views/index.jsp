@@ -17,6 +17,5 @@
 <div class='rotatable'>
     <h1 style="text-align: center; color: red;">Hello world!!!</h1>
 </div>
-
 </body>
 </html>
