@@ -29,7 +29,9 @@ public class InjectDataController extends HttpServlet {
         userService.create(grinch);
         userService.create(morty);
         ShoppingCart cart = new ShoppingCart(grinch.getId());
+        ShoppingCart cart2 = new ShoppingCart(morty.getId());
         shoppingCartService.create(cart);
+        shoppingCartService.create(cart2);
         Product milk = new Product("Burenka", 30.0);
         Product cookie = new Product("Yococo", 50.0);
         Product dreamDrink = new Product("dreamDrink", 40.0);

@@ -56,7 +56,7 @@
 
     <servlet>
         <servlet-name>all-products</servlet-name>
-        <servlet-class>com.internet.mixshop.controller.ProductController</servlet-class>
+        <servlet-class>com.internet.mixshop.controller.GetAllProductsController</servlet-class>
     </servlet>
 
     <servlet-mapping>
