@@ -6,11 +6,111 @@
 
     <servlet>
         <servlet-name>index</servlet-name>
-        <servlet-class>com.internet.mixshop.controllers.IndexController</servlet-class>
+        <servlet-class>com.internet.mixshop.controller.IndexController</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>index</servlet-name>
-        <url-pattern>/index</url-pattern>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>allUsers</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.GetAllUsersController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>allUsers</servlet-name>
+        <url-pattern>/users</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>register</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.RegisterController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>register</servlet-name>
+        <url-pattern>/registration</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteUser</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.DeleteUserController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>deleteUser</servlet-name>
+        <url-pattern>/user/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>mockData</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.InjectDataController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>mockData</servlet-name>
+        <url-pattern>/inject-data</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>all-products</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.GetAllProductsController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>all-products</servlet-name>
+        <url-pattern>/products</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>add-product</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.AddProductController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>add-product</servlet-name>
+        <url-pattern>/products/add</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>delete-product</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.DeleteProductController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>delete-product</servlet-name>
+        <url-pattern>/products/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>add-to-cart</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.AddProductToCartController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>add-to-cart</servlet-name>
+        <url-pattern>/cart/products/add</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>cart</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.GetCartProductsController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>cart</servlet-name>
+        <url-pattern>/cart/products</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>delete-from-cart</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.DeleteProductFromCartController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>delete-from-cart</servlet-name>
+        <url-pattern>/cart/products/delete</url-pattern>
     </servlet-mapping>
 </web-app>
