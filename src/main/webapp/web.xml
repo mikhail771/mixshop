@@ -16,7 +16,7 @@
 
     <servlet>
         <servlet-name>allUsers</servlet-name>
-        <servlet-class>com.internet.mixshop.controller.UserController</servlet-class>
+        <servlet-class>com.internet.mixshop.controller.GetAllUsersController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -86,31 +86,31 @@
 
     <servlet>
         <servlet-name>add-to-cart</servlet-name>
-        <servlet-class>com.internet.mixshop.controller.AddToCartController</servlet-class>
+        <servlet-class>com.internet.mixshop.controller.AddProductToCartController</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>add-to-cart</servlet-name>
-        <url-pattern>/products/add-to-cart</url-pattern>
+        <url-pattern>/cart/products/add</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>cart</servlet-name>
-        <servlet-class>com.internet.mixshop.controller.CartController</servlet-class>
+        <servlet-class>com.internet.mixshop.controller.GetCartProductsController</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>cart</servlet-name>
-        <url-pattern>/cart</url-pattern>
+        <url-pattern>/cart/products</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>delete-from-cart</servlet-name>
-        <servlet-class>com.internet.mixshop.controller.DeleteFromCartController</servlet-class>
+        <servlet-class>com.internet.mixshop.controller.DeleteProductFromCartController</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>delete-from-cart</servlet-name>
-        <url-pattern>/cart/delete</url-pattern>
+        <url-pattern>/cart/products/delete</url-pattern>
     </servlet-mapping>
 </web-app>

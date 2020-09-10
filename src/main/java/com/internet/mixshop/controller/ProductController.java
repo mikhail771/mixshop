@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ProductController extends HttpServlet {
     private static final Long USER_ID = 1L;
-
     private static final Injector injector = Injector.getInstance("com.internet.mixshop");
     private ProductService productService =
             (ProductService) injector.getInstance(ProductService.class);

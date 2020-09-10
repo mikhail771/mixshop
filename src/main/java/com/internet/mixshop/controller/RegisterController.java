@@ -1,7 +1,9 @@
 package com.internet.mixshop.controller;
 
 import com.internet.mixshop.lib.Injector;
+import com.internet.mixshop.model.ShoppingCart;
 import com.internet.mixshop.model.User;
+import com.internet.mixshop.service.ShoppingCartService;
 import com.internet.mixshop.service.UserService;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 public class RegisterController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("com.internet.mixshop");
     private UserService userService = (UserService) injector.getInstance(UserService.class);
+    private ShoppingCartService shoppingCartService =
+            (ShoppingCartService) injector.getInstance(ShoppingCartService.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -30,6 +34,7 @@ public class RegisterController extends HttpServlet {
         if (password.equals(pwdConfirm)) {
             User user = new User(name, login, password);
             userService.create(user);
+            shoppingCartService.create(new ShoppingCart(user.getId()));
             resp.sendRedirect(req.getContextPath() + "/");
         } else {
             req.setAttribute("message", "Your password and repeat password aren't the same");
