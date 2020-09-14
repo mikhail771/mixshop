@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class GetAdminAllProductsController extends HttpServlet {
+public class GetAllProductsAdminController extends HttpServlet {
     private static final Injector injector = Injector.getInstance("com.internet.mixshop");
     private ProductService productService =
             (ProductService) injector.getInstance(ProductService.class);

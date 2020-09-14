@@ -136,7 +136,7 @@
 
     <servlet>
         <servlet-name>order-details</servlet-name>
-        <servlet-class>com.internet.mixshop.controller.DetailsOrderController</servlet-class>
+        <servlet-class>com.internet.mixshop.controller.GetOrderDetailsController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -146,7 +146,7 @@
 
     <servlet>
         <servlet-name>admin-orders</servlet-name>
-        <servlet-class>com.internet.mixshop.controller.GetAdminAllOrdersController</servlet-class>
+        <servlet-class>com.internet.mixshop.controller.GetAllOrdersAdminController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -166,7 +166,7 @@
 
     <servlet>
         <servlet-name>admin-products</servlet-name>
-        <servlet-class>com.internet.mixshop.controller.GetAdminAllProductsController</servlet-class>
+        <servlet-class>com.internet.mixshop.controller.GetAllProductsAdminController</servlet-class>
     </servlet>
 
     <servlet-mapping>
