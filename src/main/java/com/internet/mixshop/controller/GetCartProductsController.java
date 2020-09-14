@@ -24,7 +24,6 @@ public class GetCartProductsController extends HttpServlet {
         List<Product> products = shoppingCart.getProducts();
         double sum = shoppingCartService.findTotalPrice(shoppingCart);
         req.setAttribute("products", products);
-        req.setAttribute("cartId", shoppingCart.getId());
         req.setAttribute("sum", sum);
         req.getRequestDispatcher("/WEB-INF/view/cart.jsp").forward(req, resp);
     }

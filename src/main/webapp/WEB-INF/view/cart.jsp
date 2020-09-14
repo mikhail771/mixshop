@@ -8,16 +8,12 @@
 <h1>Cart</h1>
 <table border="1">
     <tr>
-        <th>ID</th>
         <th>Name</th>
         <th>Price</th>
         <th>Action</th>
     </tr>
     <c:forEach var="product" items="${products}">
         <tr>
-            <td>
-                <c:out value="${product.id}"/>
-            </td>
             <td>
                 <c:out value="${product.name}"/>
             </td>
@@ -31,6 +27,6 @@
     </c:forEach>
 </table>
 <h3>Total sum: ${sum}</h3>
-<a href="${pageContext.request.contextPath}/cart/complete-order?id=${cartId}">Complete order</a>
+<a href="${pageContext.request.contextPath}/cart/complete-order">Complete order</a>
 </body>
 </html>

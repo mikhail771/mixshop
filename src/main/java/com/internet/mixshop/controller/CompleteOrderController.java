@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class CompleteOrderController extends HttpServlet {
+    private static final Long USER_ID = 1L;
     private static final Injector injector = Injector.getInstance("com.internet.mixshop");
     private OrderService orderService =
             (OrderService) injector.getInstance(OrderService.class);
@@ -19,8 +20,7 @@ public class CompleteOrderController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        Long cartId = Long.parseLong(req.getParameter("id"));
-        orderService.completeOrder(shoppingCartService.getById(cartId));
-        resp.sendRedirect("/products");
+        orderService.completeOrder(shoppingCartService.getById(USER_ID));
+        resp.sendRedirect(req.getContextPath() + "/products");
     }
 }

@@ -9,6 +9,7 @@
 <table border="1">
     <tr>
         <th>ID</th>
+        <th>Details</th>
         <th>Action</th>
     </tr>
     <c:forEach var="order" items="${orders}">
@@ -17,7 +18,10 @@
             <c:out value="${order.id}"/>
         </td>
         <td>
-            <a href="${pageContext.request.contextPath}/admin/order/delete?id=${order.id}">Delete</a>
+            <a href="${pageContext.request.contextPath}/order/details?id=${order.id}">Details</a>
+        </td>
+        <td>
+            <a href="${pageContext.request.contextPath}/orders/delete?id=${order.id}">Delete</a>
         </td>
     </tr>
     </c:forEach>

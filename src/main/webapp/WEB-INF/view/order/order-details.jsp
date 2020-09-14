@@ -16,7 +16,7 @@
                 <c:out value="${order.id}"/>
             </td>
             <td>
-        <c:forEach var="product" items="${orderProducts}">
+        <c:forEach var="product" items="${order.products}">
             <h4>${product.name}</h4>
             <h4>${product.price}</h4>
         </c:forEach>
