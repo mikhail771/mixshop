@@ -6,6 +6,7 @@ import com.internet.mixshop.lib.Service;
 import com.internet.mixshop.model.User;
 import com.internet.mixshop.service.UserService;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -35,5 +36,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean delete(Long id) {
         return userDao.delete(id);
+    }
+
+    public Optional<User> findByLogin(String login) {
+        return userDao.findByLogin(login);
     }
 }
