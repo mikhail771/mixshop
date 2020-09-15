@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Data injector</title>
 </head>
 <body>
 <div class='rotatable'>
@@ -10,6 +10,5 @@
 <a href="${pageContext.request.contextPath}/inject-data" class="btn">Inject data</a>
 </body>
 </html>
-
 </body>
 </html>

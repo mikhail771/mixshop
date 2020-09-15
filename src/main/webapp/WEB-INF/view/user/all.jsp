@@ -25,6 +25,5 @@
         </tr>
     </c:forEach>
 </table>
-<a href="${pageContext.request.contextPath}/registration">Registration</a>
 </body>
 </html>
