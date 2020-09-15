@@ -136,7 +136,7 @@
 
     <servlet>
         <servlet-name>order-details</servlet-name>
-        <servlet-class>com.internet.mixshop.controller.DetailsOrderController</servlet-class>
+        <servlet-class>com.internet.mixshop.controller.OrderDetailsController</servlet-class>
     </servlet>
 
     <servlet-mapping>
