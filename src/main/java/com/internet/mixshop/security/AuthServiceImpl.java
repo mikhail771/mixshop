@@ -5,6 +5,7 @@ import com.internet.mixshop.lib.Inject;
 import com.internet.mixshop.lib.Service;
 import com.internet.mixshop.model.User;
 import com.internet.mixshop.service.UserService;
+import java.util.Optional;
 
 @Service
 public class AuthServiceImpl implements AuthService {
@@ -13,10 +14,9 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public User login(String login, String password) throws AuthenticationException {
-        User userFromDB = userService.findByLogin(login)
-                .orElseThrow(() -> new AuthenticationException("Incorrect login or password"));
-        if (userFromDB.getPassword().equals(password)) {
-            return userFromDB;
+        Optional<User> userFromDB = userService.findByLogin(login);
+        if (userFromDB.isPresent() && userFromDB.get().getPassword().equals(password)) {
+            return userFromDB.get();
         }
         throw new AuthenticationException("Incorrect username or password");
     }
