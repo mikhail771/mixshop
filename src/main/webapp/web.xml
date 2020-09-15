@@ -113,4 +113,64 @@
         <servlet-name>delete-from-cart</servlet-name>
         <url-pattern>/cart/products/delete</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>complete-order</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.CompleteOrderController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>complete-order</servlet-name>
+        <url-pattern>/cart/complete-order</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>user-orders</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.GetAllUserOrdersController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>user-orders</servlet-name>
+        <url-pattern>/user/orders</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>order-details</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.OrderDetailsController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>order-details</servlet-name>
+        <url-pattern>/order/details</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>admin-orders</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.GetAllOrdersController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>admin-orders</servlet-name>
+        <url-pattern>/orders</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>admin-delete-order</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.DeleteOrderController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>admin-delete-order</servlet-name>
+        <url-pattern>/orders/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>admin-products</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.ManageProductsController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>admin-products</servlet-name>
+        <url-pattern>/products/manage</url-pattern>
+    </servlet-mapping>
 </web-app>

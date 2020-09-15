@@ -32,6 +32,6 @@ public class DeleteProductFromCartController extends HttpServlet {
         double sum = shoppingCartService.findTotalPrice(shoppingCart);
         req.setAttribute("products", products);
         req.setAttribute("sum", sum);
-        resp.sendRedirect("/cart/products");
+        resp.sendRedirect(req.getContextPath() + "/cart/products");
     }
 }

@@ -26,12 +26,11 @@
             </td>
             <td>
                 <a href="${pageContext.request.contextPath}/cart/products/add?id=${product.id}">To cart</a>
-                <a href="${pageContext.request.contextPath}/products/delete?id=${product.id}">Delete</a>
             </td>
         </tr>
     </c:forEach>
 </table>
-<a href="${pageContext.request.contextPath}/products/add">Add product</a>
+<a href="${pageContext.request.contextPath}/orders">My orders</a>
 <h3 style="text-align: right">In your <a href="${pageContext.request.contextPath}cart/products">cart</a> ${countInCart} products</h3>
 </body>
 </html>
