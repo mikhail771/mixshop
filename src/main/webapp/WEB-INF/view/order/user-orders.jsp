@@ -21,5 +21,7 @@
         </td>
     </tr>
     </c:forEach>
+</table>
+    <a href="${pageContext.request.contextPath}/logout">LOGOUT</a>
 </body>
 </html>

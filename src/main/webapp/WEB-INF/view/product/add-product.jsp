@@ -10,5 +10,6 @@
     Price: <input type="number" name="price" required>
     <button type="submit">Add product</button>
 </form>
+<a href="${pageContext.request.contextPath}/logout">LOGOUT</a>
 </body>
 </html>

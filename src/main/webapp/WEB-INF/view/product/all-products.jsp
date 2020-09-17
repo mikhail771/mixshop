@@ -30,7 +30,8 @@
         </tr>
     </c:forEach>
 </table>
-<a href="${pageContext.request.contextPath}/orders">My orders</a>
-<h3 style="text-align: right">In your <a href="${pageContext.request.contextPath}cart/products">cart</a> ${countInCart} products</h3>
+<a href="${pageContext.request.contextPath}/user/orders">My orders</a>
+<h3 style="text-align: right">Your <a href="${pageContext.request.contextPath}cart/products">cart</a></h3>
+<a href="${pageContext.request.contextPath}/logout">LOGOUT</a>
 </body>
 </html>
