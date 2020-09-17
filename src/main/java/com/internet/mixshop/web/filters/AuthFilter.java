@@ -1,8 +1,8 @@
 package com.internet.mixshop.web.filters;
 
-import com.internet.mixshop.lib.Injector;
-import com.internet.mixshop.service.UserService;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -14,11 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AuthFilter implements Filter {
     private static final String USER_ID = "user_id";
-    private static final Injector injector = Injector.getInstance("com.internet.mixshop");
-    private UserService userService = (UserService) injector.getInstance(UserService.class);
+    private Set<String> allowedUrls = new HashSet<>();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
+        allowedUrls.add("/login");
+        allowedUrls.add("/registration");
+        allowedUrls.add("/products");
     }
 
     @Override
@@ -27,7 +29,7 @@ public class AuthFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         String url = req.getServletPath();
-        if (url.equals("/login") || url.equals("/registration")) {
+        if (allowedUrls.contains(url)) {
             chain.doFilter(req, resp);
             return;
         }

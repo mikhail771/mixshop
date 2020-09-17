@@ -31,6 +31,7 @@ public class AuthorizationFilter implements Filter {
         protectedUrls.put("/admin-panel", Set.of(Role.RoleName.ADMIN));
         protectedUrls.put("/products/manage", Set.of(Role.RoleName.ADMIN));
         protectedUrls.put("/orders", Set.of(Role.RoleName.ADMIN));
+        protectedUrls.put("/order/details", Set.of(Role.RoleName.ADMIN));
         protectedUrls.put("/cart/complete-order", Set.of(Role.RoleName.USER));
         protectedUrls.put("/cart/products/add", Set.of(Role.RoleName.USER));
         protectedUrls.put("/cart/products", Set.of(Role.RoleName.USER));
@@ -49,10 +50,8 @@ public class AuthorizationFilter implements Filter {
             chain.doFilter(req, resp);
             return;
         }
-
         Long userId = (Long) req.getSession().getAttribute(USER_ID);
         User user = userService.getById(userId);
-
         if (isAuthorized(user, protectedUrls.get(requestedUrl))) {
             chain.doFilter(req, resp);
         } else {
@@ -62,7 +61,6 @@ public class AuthorizationFilter implements Filter {
 
     @Override
     public void destroy() {
-
     }
 
     private boolean isAuthorized(User user, Set<Role.RoleName> authorizedRoles) {
