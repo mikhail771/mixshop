@@ -28,5 +28,6 @@
 </table>
 <h3>Total sum: ${sum}</h3>
 <a href="${pageContext.request.contextPath}/cart/complete-order">Complete order</a>
+<a href="${pageContext.request.contextPath}/logout">LOGOUT</a>
 </body>
 </html>

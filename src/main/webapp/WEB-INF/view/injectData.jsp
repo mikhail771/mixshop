@@ -5,10 +5,7 @@
 </head>
 <body>
 <h2>Your data was injected to DB!</h2>
-<a href="${pageContext.request.contextPath}/users" class="btn">All users</a>
 <a href="${pageContext.request.contextPath}/products" class="btn">All products</a>
-</body>
-</html>
-
+<a href="${pageContext.request.contextPath}/logout">LOGOUT</a>
 </body>
 </html>

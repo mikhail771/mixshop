@@ -30,6 +30,6 @@
         </tr>
     </c:forEach>
 </table>
-<a href="${pageContext.request.contextPath}/products/add">Add product</a>
+<a href="${pageContext.request.contextPath}/logout">LOGOUT</a>
 </body>
 </html>

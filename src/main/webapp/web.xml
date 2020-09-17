@@ -184,12 +184,41 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.LogoutController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>admin-panel</servlet-name>
+        <servlet-class>com.internet.mixshop.controller.AdminPanelController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>admin-panel</servlet-name>
+        <url-pattern>/admin-panel</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>authFilter</filter-name>
         <filter-class>com.internet.mixshop.web.filters.AuthFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>authFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>authorizationFilter</filter-name>
+        <filter-class>com.internet.mixshop.web.filters.AuthorizationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>authorizationFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 </web-app>
