@@ -37,7 +37,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
 
     @Override
     public Optional<Product> getById(Long id) {
-        String query = "SELECT * FROM product WHERE product_id = ? AND isDeleted = FALSE;";
+        String query = "SELECT * FROM product WHERE product_id = ? AND isDeleted = false;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
@@ -55,7 +55,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
     @Override
     public Product update(Product product) {
         String query = "UPDATE product SET name = ?, "
-                + "price = ? WHERE product_id = ?;";
+                + "price = ? WHERE product_id = ? AND isDeleted = false;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, product.getName());
@@ -70,7 +70,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
 
     @Override
     public boolean delete(Long id) {
-        String query = "UPDATE product SET isDeleted = TRUE WHERE product_id = ?;";
+        String query = "UPDATE product SET isDeleted = true WHERE product_id = ?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
@@ -83,7 +83,7 @@ public class ProductDaoJdbcImpl implements ProductDao {
     @Override
     public List<Product> getAll() {
         try (Connection connection = ConnectionUtil.getConnection()) {
-            String query = "SELECT * FROM product WHERE isDeleted = FALSE;";
+            String query = "SELECT * FROM product WHERE isDeleted = false;";
             List<Product> products = new ArrayList<>();
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
