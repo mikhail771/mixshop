@@ -1,11 +1,11 @@
 package com.internet.mixshop;
 
+import com.internet.mixshop.dao.ProductDao;
 import com.internet.mixshop.lib.Injector;
 import com.internet.mixshop.model.Product;
 import com.internet.mixshop.model.ShoppingCart;
 import com.internet.mixshop.model.User;
 import com.internet.mixshop.service.OrderService;
-import com.internet.mixshop.service.ProductService;
 import com.internet.mixshop.service.ShoppingCartService;
 import com.internet.mixshop.service.UserService;
 
@@ -13,7 +13,8 @@ public class Application {
     private static Injector injector = Injector.getInstance("com.internet.mixshop");
 
     public static void main(String[] args) {
-        ProductService productService = (ProductService) injector.getInstance(ProductService.class);
+        final ProductDao productService = (ProductDao)
+                injector.getInstance(ProductDao.class);
         Product milk = new Product("Burenka", 30.0);
         Product cookie = new Product("Yococo", 50.0);
         Product dreamDrink = new Product("dreamDrink", 40.0);
