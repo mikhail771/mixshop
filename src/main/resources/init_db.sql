@@ -4,7 +4,7 @@ CREATE TABLE `mix`.`product` (
   `product_id` BIGINT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `price` DOUBLE NOT NULL,
-  `isDeleted` VARCHAR(45) NOT NULL DEFAULT 0,
+  `is_deleted` VARCHAR(45) NOT NULL DEFAULT 0,
   PRIMARY KEY (`product_id`));
 
 INSERT INTO `mix`.`product` (`name`, `price`) VALUES ('milk', '22.22');

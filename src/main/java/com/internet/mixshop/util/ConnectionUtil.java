@@ -20,10 +20,9 @@ public class ConnectionUtil {
         Properties dbProperties = new Properties();
         dbProperties.put("user", "username");
         dbProperties.put("password", "password");
-        String url = URL;
         Connection connection;
         try {
-            return DriverManager.getConnection(url, dbProperties);
+            return DriverManager.getConnection(URL, dbProperties);
         } catch (SQLException e) {
             throw new RuntimeException("Can't establish the connection to DB", e);
         }
