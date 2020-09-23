@@ -1,27 +1,18 @@
 package com.internet.mixshop.db;
 
 import com.internet.mixshop.model.Order;
-import com.internet.mixshop.model.Product;
 import com.internet.mixshop.model.ShoppingCart;
 import com.internet.mixshop.model.User;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Storage {
-    public static final List<Product> products = new ArrayList<>();
     public static final List<Order> orders = new ArrayList<>();
     public static final List<ShoppingCart> shoppingCarts = new ArrayList<>();
     public static final List<User> users = new ArrayList<>();
-    private static Long productId = 0L;
     private static Long orderId = 0L;
     private static Long shoppingCartId = 0L;
     private static Long userId = 0L;
-
-    public static void addProduct(Product product) {
-        productId++;
-        product.setId(productId);
-        products.add(product);
-    }
 
     public static void addOrder(Order order) {
         orderId++;
