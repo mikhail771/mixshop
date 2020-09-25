@@ -50,7 +50,8 @@ public class OrderDaoJdbcImpl implements OrderDao {
             while (resultSet.next()) {
                 order.setId(resultSet.getLong(1));
             }
-            addProductsToOrder(order.getProducts(), order.getId());
+            statement.close();
+            addProductsToOrder(order.getProducts(), order.getId(), connection);
             return order;
         } catch (SQLException e) {
             throw new DataProcessingException("Order with id " + order.getId()
@@ -69,6 +70,7 @@ public class OrderDaoJdbcImpl implements OrderDao {
                 Order order = getOrder(resultSet, connection);
                 return Optional.ofNullable(order);
             }
+            statement.close();
         } catch (SQLException e) {
             throw new DataProcessingException("Can't get order with id = " + id, e);
         }
@@ -77,26 +79,28 @@ public class OrderDaoJdbcImpl implements OrderDao {
 
     @Override
     public Order update(Order order) {
-        String query = "UPDATE orders SET user_id = ?, "
-                + "WHERE order_id = ? AND is_deleted = false;";
-        try (Connection connection = ConnectionUtil.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setLong(1, order.getUserId());
-            statement.setLong(2, order.getId());
+        String query = "DELETE FROM orders_products WHERE order_id = ?;";
+        try (Connection connection = ConnectionUtil.getConnection();
+                PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setLong(1, order.getId());
             statement.executeUpdate();
-            return order;
+            statement.close();
+            addProductsToOrder(order.getProducts(), order.getId(), connection);
         } catch (SQLException e) {
-            throw new DataProcessingException("Order " + order.getId() + " can't be updated", e);
+            throw new DataProcessingException("Can't update order "
+                    + order, e);
         }
+        return order;
     }
 
     @Override
     public boolean delete(Long orderId) {
-        String query = "UPDATE orders SET is_deleted = true WHERE order_id = ?;";
+        String query = "UPDATE orders SET is_deleted = true WHERE order_id = ? "
+                + "AND is_deleted = false;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, orderId);
-            return statement.executeUpdate() == 1;
+            return statement.executeUpdate() >= 1;
         } catch (SQLException e) {
             throw new DataProcessingException("Can't delete order with id " + orderId, e);
         }
@@ -128,9 +132,10 @@ public class OrderDaoJdbcImpl implements OrderDao {
         return new Order(orderId, products, userId);
     }
 
-    private void addProductsToOrder(List<Product> products, Long orderId) throws SQLException {
+    private void addProductsToOrder(List<Product> products, Long orderId, Connection connection)
+            throws SQLException {
         String query = "INSERT INTO orders_products (order_id, product_id) VALUES (?, ?)";
-        try (Connection connection = ConnectionUtil.getConnection()) {
+        try (connection) {
             PreparedStatement statement = connection.prepareStatement(query);
             for (Product product : products) {
                 statement.setLong(1, orderId);
@@ -143,8 +148,8 @@ public class OrderDaoJdbcImpl implements OrderDao {
     }
 
     private Order buildOrder(ResultSet resultSet) throws SQLException {
-        long cartId = resultSet.getLong("order_id");
-        long userId = resultSet.getLong("user_id");
+        Long cartId = resultSet.getLong("order_id");
+        Long userId = resultSet.getLong("user_id");
         Order newOrder = new Order(userId);
         newOrder.setId(cartId);
         return newOrder;
@@ -160,9 +165,9 @@ public class OrderDaoJdbcImpl implements OrderDao {
             statement.setLong(1, orderId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                long id = resultSet.getLong("product_id");
+                Long id = resultSet.getLong("product_id");
                 String productName = resultSet.getString("name");
-                double price = resultSet.getDouble("price");
+                Double price = resultSet.getDouble("price");
                 Product productFromOrder = new Product(productName, price);
                 productFromOrder.setId(id);
                 orderedProducts.add(productFromOrder);
