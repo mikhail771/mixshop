@@ -2,13 +2,11 @@ package com.internet.mixshop.dao.impl;
 
 import com.internet.mixshop.dao.ShoppingCartDao;
 import com.internet.mixshop.db.Storage;
-import com.internet.mixshop.lib.Dao;
 import com.internet.mixshop.model.ShoppingCart;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
-@Dao
 public class ShoppingCartDaoImpl implements ShoppingCartDao {
     @Override
     public ShoppingCart create(ShoppingCart shoppingCart) {

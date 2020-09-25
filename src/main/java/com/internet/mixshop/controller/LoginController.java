@@ -36,6 +36,6 @@ public class LoginController extends HttpServlet {
             req.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(req, resp);
             return;
         }
-        resp.sendRedirect(req.getContextPath() + "/");
+        resp.sendRedirect(req.getContextPath() + "/products");
     }
 }

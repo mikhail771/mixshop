@@ -2,13 +2,11 @@ package com.internet.mixshop.dao.impl;
 
 import com.internet.mixshop.dao.UserDao;
 import com.internet.mixshop.db.Storage;
-import com.internet.mixshop.lib.Dao;
 import com.internet.mixshop.model.User;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
-@Dao
 public class UserDaoImpl implements UserDao {
     @Override
     public User create(User user) {
