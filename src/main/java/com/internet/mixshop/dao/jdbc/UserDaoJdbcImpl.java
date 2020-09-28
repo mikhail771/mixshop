@@ -21,7 +21,7 @@ import java.util.Set;
 @Dao
 public class UserDaoJdbcImpl implements UserDao {
     @Inject
-    RoleDao roleDao;
+    private RoleDao roleDao;
 
     @Override
     public Optional<User> findByLogin(String login) {

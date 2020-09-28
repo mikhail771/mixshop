@@ -61,20 +61,23 @@ public class OrderDaoJdbcImpl implements OrderDao {
 
     @Override
     public Optional<Order> getById(Long id) {
+        Order order = null;
+        List<Product> productList = getProductsListByOrderId(id);
+
         String query = "SELECT * FROM orders WHERE order_id = ?;";
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Order order = getOrder(resultSet, connection);
-                return Optional.ofNullable(order);
+                order = getOrder(resultSet, connection);
+                order.setProducts(productList);
             }
             statement.close();
         } catch (SQLException e) {
             throw new DataProcessingException("Can't get order with id = " + id, e);
         }
-        return Optional.empty();
+        return Optional.ofNullable(order);
     }
 
     @Override
@@ -128,22 +131,17 @@ public class OrderDaoJdbcImpl implements OrderDao {
     private Order getOrder(ResultSet resultSet, Connection connection) throws SQLException {
         Long orderId = resultSet.getLong("order_id");
         Long userId = resultSet.getLong("user_id");
-        List<Product> products = getProductsListByOrderId(orderId);
-        return new Order(orderId, products, userId);
+        return new Order(orderId, userId);
     }
 
     private void addProductsToOrder(List<Product> products, Long orderId, Connection connection)
             throws SQLException {
         String query = "INSERT INTO orders_products (order_id, product_id) VALUES (?, ?)";
-        try (connection) {
-            PreparedStatement statement = connection.prepareStatement(query);
-            for (Product product : products) {
-                statement.setLong(1, orderId);
-                statement.setLong(2, product.getId());
-                statement.executeUpdate();
-            }
-        } catch (SQLException e) {
-            throw new DataProcessingException("Can't add products to order: " + orderId, e);
+        PreparedStatement statement = connection.prepareStatement(query);
+        for (Product product : products) {
+            statement.setLong(1, orderId);
+            statement.setLong(2, product.getId());
+            statement.executeUpdate();
         }
     }
 

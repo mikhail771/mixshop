@@ -102,8 +102,7 @@ public class RoleDaoJdbcImpl implements RoleDao {
     public Set<Role> getRolesByUserId(Long userId) {
         String query = "SELECT r.role_id, r.role_name FROM roles r "
                 + "JOIN users_roles ur ON ur.role_id = r.role_id "
-                + "JOIN users u ON u.user_id = ur.user_id "
-                + "where u.user_id = ?;";
+                + "where ur.user_id = ?;";;
         try (Connection connection = ConnectionUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setLong(1, userId);
