@@ -1,15 +1,12 @@
 package com.internet.mixshop.model;
 
 public class Role {
-    private RoleName roleName;
+    private String roleName;
     private Long id;
 
-    private Role(RoleName roleName) {
+    public Role(Long id, String roleName) {
+        this.id = id;
         this.roleName = roleName;
-    }
-
-    public static Role of(String roleName) {
-        return new Role(RoleName.valueOf(roleName));
     }
 
     public Long getId() {
@@ -20,15 +17,11 @@ public class Role {
         this.id = id;
     }
 
-    public RoleName getRoleName() {
+    public String getRoleName() {
         return roleName;
     }
 
-    public void setRoleName(RoleName roleName) {
+    public void setRoleName(String roleName) {
         this.roleName = roleName;
-    }
-
-    public enum RoleName {
-        USER, ADMIN;
     }
 }

@@ -19,25 +19,27 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AuthorizationFilter implements Filter {
     private static final String USER_ID = "user_id";
+    private static final String ADMIN = "admin";
+    private static final String USER = "user";
     private static final Injector injector = Injector.getInstance("com.internet.mixshop");
     private UserService userService = (UserService) injector.getInstance(UserService.class);
-    private Map<String, Set<Role.RoleName>> protectedUrls = new HashMap<>();
+    private Map<String, Set<String>> protectedUrls = new HashMap<>();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        protectedUrls.put("/users", Set.of(Role.RoleName.ADMIN));
-        protectedUrls.put("/products/add", Set.of(Role.RoleName.ADMIN));
-        protectedUrls.put("/admin-orders", Set.of(Role.RoleName.ADMIN));
-        protectedUrls.put("/admin-panel", Set.of(Role.RoleName.ADMIN));
-        protectedUrls.put("/products/manage", Set.of(Role.RoleName.ADMIN));
-        protectedUrls.put("/orders", Set.of(Role.RoleName.ADMIN));
-        protectedUrls.put("/order/details", Set.of(Role.RoleName.ADMIN));
-        protectedUrls.put("/cart/complete-order", Set.of(Role.RoleName.USER));
-        protectedUrls.put("/cart/products/add", Set.of(Role.RoleName.USER));
-        protectedUrls.put("/cart/products", Set.of(Role.RoleName.USER));
-        protectedUrls.put("/cart/products/delete", Set.of(Role.RoleName.USER));
-        protectedUrls.put("/user/orders", Set.of(Role.RoleName.USER));
-        protectedUrls.put("/order/details", Set.of(Role.RoleName.USER));
+        protectedUrls.put("/users", Set.of(ADMIN));
+        protectedUrls.put("/products/add", Set.of(ADMIN));
+        protectedUrls.put("/admin-orders", Set.of(ADMIN));
+        protectedUrls.put("/admin-panel", Set.of(ADMIN));
+        protectedUrls.put("/products/manage", Set.of(ADMIN));
+        protectedUrls.put("/orders", Set.of(ADMIN));
+        protectedUrls.put("/order/details", Set.of(ADMIN));
+        protectedUrls.put("/cart/complete-order", Set.of(USER));
+        protectedUrls.put("/cart/products/add", Set.of(USER));
+        protectedUrls.put("/cart/products", Set.of(USER));
+        protectedUrls.put("/cart/products/delete", Set.of(USER));
+        protectedUrls.put("/user/orders", Set.of(USER));
+        protectedUrls.put("/order/details", Set.of(USER));
     }
 
     @Override
@@ -63,8 +65,8 @@ public class AuthorizationFilter implements Filter {
     public void destroy() {
     }
 
-    private boolean isAuthorized(User user, Set<Role.RoleName> authorizedRoles) {
-        for (Role.RoleName authorizedRole : authorizedRoles) {
+    private boolean isAuthorized(User user, Set<String> authorizedRoles) {
+        for (String authorizedRole : authorizedRoles) {
             for (Role userRole : user.getRoles()) {
                 if (authorizedRole.equals(userRole.getRoleName())) {
                     return true;

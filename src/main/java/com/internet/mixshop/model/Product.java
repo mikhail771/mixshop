@@ -1,5 +1,7 @@
 package com.internet.mixshop.model;
 
+import java.util.Objects;
+
 public class Product {
     private Long id;
     private String name;
@@ -47,5 +49,27 @@ public class Product {
                 + ", name='" + name + '\''
                 + ", price=" + price
                 + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null) {
+            return false;
+        }
+        if (o.getClass() != o.getClass()) {
+            return false;
+        }
+        Product product = (Product) o;
+        return product.price == price
+                && id.equals(product.id)
+                && name.equals(product.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price);
     }
 }
