@@ -33,5 +33,6 @@
 <a href="${pageContext.request.contextPath}/user/orders">My orders</a>
 <h3 style="text-align: right">Your <a href="${pageContext.request.contextPath}cart/products">cart</a></h3>
 <a href="${pageContext.request.contextPath}/logout">LOGOUT</a>
+<a href="${pageContext.request.contextPath}/inject-data" class="btn">Inject admin</a>
 </body>
 </html>

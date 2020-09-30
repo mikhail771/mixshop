@@ -7,4 +7,6 @@ public interface UserService extends GenericService<User, Long> {
     User update(User user);
 
     Optional<User> findByLogin(String login);
+
+    User getUserWithHashPassword(User user);
 }

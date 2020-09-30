@@ -93,15 +93,11 @@ CREATE TABLE `mix`.`users_roles` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+ALTER TABLE `mix`.`users`
+ADD COLUMN `salt` VARBINARY(256) NOT NULL AFTER `is_deleted`;
+
 INSERT INTO `mix`.`product` (`name`, `price`) VALUES ('milk', '22.22');
 INSERT INTO `mix`.`product` (`name`, `price`) VALUES ('cookie', '33.33');
 INSERT INTO `mix`.`product` (`name`, `price`) VALUES ('water', '11.11');
 INSERT INTO `mix`.`roles` (`role_name`) VALUES ('admin');
 INSERT INTO `mix`.`roles` (`role_name`) VALUES ('user');
-INSERT INTO `mix`.`users` (`name`, `login`, `password`) VALUES ('admin', 'admin', '1234');
-INSERT INTO `mix`.`users` (`name`, `login`, `password`) VALUES ('user', 'user', '4321');
-INSERT INTO `mix`.`users_roles` (`user_id`, `role_id`) VALUES ('1', '1');
-INSERT INTO `mix`.`users_roles` (`user_id`, `role_id`) VALUES ('1', '2');
-INSERT INTO `mix`.`users_roles` (`user_id`, `role_id`) VALUES ('2', '2');
-INSERT INTO `mix`.`shopping_carts` (`cart_id`, `user_id`) VALUES ('1', '1');
-INSERT INTO `mix`.`shopping_carts` (`cart_id`, `user_id`) VALUES ('2', '2');

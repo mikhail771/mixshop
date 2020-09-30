@@ -69,7 +69,7 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
             statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                return Optional.of(getCartFromResult(resultSet, connection));
+                return Optional.of(getCartFromResult(resultSet));
             }
             return Optional.empty();
         } catch (SQLException e) {
@@ -113,7 +113,7 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
             ResultSet resultSet = statement.executeQuery();
             List<ShoppingCart> carts = new ArrayList<>();
             while (resultSet.next()) {
-                carts.add(getCartFromResult(resultSet, connection));
+                carts.add(getCartFromResult(resultSet));
             }
             return carts;
         } catch (SQLException e) {
@@ -155,13 +155,12 @@ public class ShoppingCartDaoJdbcImpl implements ShoppingCartDao {
         return products;
     }
 
-    private ShoppingCart getCartFromResult(ResultSet resultSet, Connection connection)
+    private ShoppingCart getCartFromResult(ResultSet resultSet)
             throws SQLException {
         Long cartId = resultSet.getLong("cart_id");
         Long userId = resultSet.getLong("user_id");
         ShoppingCart shoppingCart = new ShoppingCart(userId);
         shoppingCart.setId(cartId);
-        shoppingCart.setProducts(getProductsInCart(cartId));
         return shoppingCart;
     }
 
