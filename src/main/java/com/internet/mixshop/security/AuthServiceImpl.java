@@ -25,7 +25,6 @@ public class AuthServiceImpl implements AuthService {
     private boolean isPasswordValid(User userFromDB, String password) {
 
         return HashUtil.hashPassword(password, userFromDB.getSalt())
-                .equals(userFromDB.getPassword()
-        );
+                .equals(userFromDB.getPassword());
     }
 }

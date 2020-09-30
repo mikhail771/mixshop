@@ -13,6 +13,7 @@ CREATE TABLE `mix`.`product` (
   `login` VARCHAR(256) NOT NULL,
   `password` VARCHAR(256) NOT NULL,
   `is_deleted` TINYINT(1)  NOT NULL DEFAULT 0,
+  `salt` VARBINARY(256) NOT NULL,
   PRIMARY KEY (`user_id`));
 
   CREATE TABLE `mix`.`roles` (
@@ -92,9 +93,6 @@ CREATE TABLE `mix`.`users_roles` (
     REFERENCES `mix`.`product` (`product_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-
-ALTER TABLE `mix`.`users`
-ADD COLUMN `salt` VARBINARY(256) NOT NULL AFTER `is_deleted`;
 
 INSERT INTO `mix`.`product` (`name`, `price`) VALUES ('milk', '22.22');
 INSERT INTO `mix`.`product` (`name`, `price`) VALUES ('cookie', '33.33');
