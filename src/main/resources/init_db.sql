@@ -13,6 +13,7 @@ CREATE TABLE `mix`.`product` (
   `login` VARCHAR(256) NOT NULL,
   `password` VARCHAR(256) NOT NULL,
   `is_deleted` TINYINT(1)  NOT NULL DEFAULT 0,
+  `salt` VARBINARY(256) NOT NULL,
   PRIMARY KEY (`user_id`));
 
   CREATE TABLE `mix`.`roles` (
@@ -98,10 +99,3 @@ INSERT INTO `mix`.`product` (`name`, `price`) VALUES ('cookie', '33.33');
 INSERT INTO `mix`.`product` (`name`, `price`) VALUES ('water', '11.11');
 INSERT INTO `mix`.`roles` (`role_name`) VALUES ('admin');
 INSERT INTO `mix`.`roles` (`role_name`) VALUES ('user');
-INSERT INTO `mix`.`users` (`name`, `login`, `password`) VALUES ('admin', 'admin', '1234');
-INSERT INTO `mix`.`users` (`name`, `login`, `password`) VALUES ('user', 'user', '4321');
-INSERT INTO `mix`.`users_roles` (`user_id`, `role_id`) VALUES ('1', '1');
-INSERT INTO `mix`.`users_roles` (`user_id`, `role_id`) VALUES ('1', '2');
-INSERT INTO `mix`.`users_roles` (`user_id`, `role_id`) VALUES ('2', '2');
-INSERT INTO `mix`.`shopping_carts` (`cart_id`, `user_id`) VALUES ('1', '1');
-INSERT INTO `mix`.`shopping_carts` (`cart_id`, `user_id`) VALUES ('2', '2');
