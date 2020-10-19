@@ -1,5 +1,7 @@
-# Mixshop
+# Internet Shop Prototype
 ## Demo project - online store.
+  This project created on N-tier architecture with DAO layer, Service (business logic) layer and simple
+  presentation layer in JSP.
 ## Functionality for user:
  * Registration
  * Login
